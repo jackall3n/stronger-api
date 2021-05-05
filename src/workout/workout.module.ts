@@ -1,6 +1,7 @@
 import { HttpModule, Module } from '@nestjs/common';
 import { WorkoutResolver } from './workout.resolver';
 import { WorkoutService } from './workout.service';
+import { WorkoutMapper } from './workout.mapper';
 
 @Module({
   imports: [
@@ -13,6 +14,6 @@ import { WorkoutService } from './workout.service';
       },
     }),
   ],
-  providers: [WorkoutResolver, WorkoutService],
+  providers: [WorkoutService, WorkoutResolver, WorkoutMapper],
 })
 export class WorkoutModule {}

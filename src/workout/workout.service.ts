@@ -7,11 +7,17 @@ export class WorkoutService {
   async workouts(user: string, limit = 100) {
     const query = {
       limit,
-      include: 'parseSetGroups.parseExercise,parseOriginRoutine',
+      include: ['parseSetGroups.parseExercise', 'parseOriginRoutine'].join(','),
       _method: 'GET',
       where: {
         completionDate: {
           $exists: true,
+        },
+        startDate: {
+          $gt: {
+            __type: 'Date',
+            iso: '2021-04-25T00:00:00.000Z',
+          },
         },
         user: {
           __type: 'Pointer',

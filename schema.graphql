@@ -2,10 +2,29 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Set {
+  checked: Boolean!
+}
+
+type Exercise {
+  id: ID!
+  completed: DateTime!
+  name: String!
+  sets: [Set!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Workout {
   id: ID!
+  name: String!
+  completed: DateTime!
+  exercises: [Exercise!]!
 }
 
 type Query {
-  workouts: [Workout!]!
+  workouts(limit: Float, id: String!): [Workout!]!
 }

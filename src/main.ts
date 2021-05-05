@@ -5,11 +5,11 @@ import { Logger } from "@nestjs/common";
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  const { port = 3000 } = process.env;
+  const { PORT = 3000 } = process.env;
 
-  await app.listen(port);
+  await app.listen(PORT);
 
-  Logger.log(`> :${port}`);
+  Logger.log(`> :${PORT}`);
 }
 
 bootstrap();
